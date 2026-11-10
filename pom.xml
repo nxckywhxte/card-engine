@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.nxckywhxte</groupId>
+    <artifactId>card-engine</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Card Engine</name>
+    <description>
+        Универсальный headless-движок для создания классических карточных игр на Java 25.
+        Абстрактная архитектура, Event Sourcing, Netty и виртуальные потоки.
+    </description>
+    <url>
+        https://github.com/nxckywhxte/card-engine
+    </url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>nxckywhxte</id>
+            <name>Nikita Belonogov</name>
+            <email>crcku.mark00@gmail.com</email>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>engine-core</module>
+        <module>engine-fsm</module>
+        <module>engine-network</module>
+        <module>engine-persistence</module>
+        <module>engine-testing</module>
+        <module>engine-api</module>
+    </modules>
+
+    <properties>
+        <!-- Версия Java -->
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Версии зависимостей -->
+        <junit.version>	5.14.4</junit.version>
+        <netty.version>4.2.20.Final</netty.version>
+        <jackson.version>2.23.0</jackson.version>
+        <slf4j.version>2.0.20</slf4j.version>
+        <logback.version>1.6.6</logback.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Внутренние модули -->
+            <dependency>
+                <groupId>io.github.nxckywhxte</groupId>
+                <artifactId>engine-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.nxckywhxte</groupId>
+                <artifactId>engine-fsm</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.nxckywhxte</groupId>
+                <artifactId>engine-network</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.nxckywhxte</groupId>
+                <artifactId>engine-persistence</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.nxckywhxte</groupId>
+                <artifactId>engine-testing</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.nxckywhxte</groupId>
+                <artifactId>engine-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Тестирование -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- Общие зависимости для всех модулей -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Компилятор Java 25 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.16.0</version>
+                <configuration>
+                    <source>25</source>
+                    <target>25</target>
+                    <release>25</release>
+                </configuration>
+            </plugin>
+
+            <!-- Тесты -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.6.0</version>
+            </plugin>
+
+            <!-- Сборка JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.5.1</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
