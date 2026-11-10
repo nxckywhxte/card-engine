@@ -1,0 +1,52 @@
+name: "✨ Feature Request"
+description: "Предложить новую функциональность или улучшение"
+title: "[FEAT] "
+labels: ["enhancement"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Спасибо за предложение! Пожалуйста, заполните форму ниже.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "📝 Описание задачи"
+      description: "Кратко и четко опишите, что нужно сделать."
+      placeholder: "Например: Реализовать интерфейс Zone с поддержкой дженериков..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: "🎯 Цель и контекст"
+      description: "Зачем это нужно? Какую проблему решает?"
+      placeholder: "Это необходимо для того, чтобы..."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: dod
+    attributes:
+      label: "✅ Критерии приемки (Definition of Done)"
+      description: "Отметьте все пункты, которые должны быть выполнены."
+      options:
+        - label: "Код написан и соответствует стилю проекта (Conventional Commits)"
+          required: true
+        - label: "Покрыто Unit-тестами (минимум 80%)"
+        - label: "Обновлена документация (Javadoc / README)"
+        - label: "CI/CD (Maven Build & Test) проходит успешно"
+          required: true
+        - label: "Self-Review выполнен"
+          required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: "📎 Дополнительные материалы"
+      description: "Ссылки на спецификации, схемы, обсуждения."
+    validations:
+      required: false
